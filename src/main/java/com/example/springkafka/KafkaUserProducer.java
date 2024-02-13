@@ -18,10 +18,10 @@ public class KafkaUserProducer {
     private static final Logger LOGGER = LoggerFactory.getLogger(KafkaUserProducer.class);
 
 
-    private KafkaTemplate<String, User> kafkaTemplate;
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
 @Autowired
-public void KafkaProducer(KafkaTemplate<String, User> kafkaTemplate) {
+public void KafkaProducer(KafkaTemplate<String, Object> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
@@ -31,6 +31,6 @@ public void KafkaProducer(KafkaTemplate<String, User> kafkaTemplate) {
         user.setId(1);
         user.setFirstName("John");
         user.setLastName("Doe");
-        kafkaTemplate.send(queueTopicName, user);
+        kafkaTemplate.send(queueTopicName, user.toString());
     }
 }
