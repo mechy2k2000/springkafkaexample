@@ -16,6 +16,10 @@ public class KafkaTopicConfig {
     @Value("${spring.kafka.topic-json.name}")
     private String topicJsonName;
 
+     @Value("${spring.kafka.queue-topic-name}")
+    private String queueTopicName;
+
+
     @Bean
     public NewTopic javaguidesTopic(){
         return TopicBuilder.name(topicName)
@@ -25,6 +29,12 @@ public class KafkaTopicConfig {
     @Bean
     public NewTopic javaguidesJsonTopic(){
         return TopicBuilder.name(topicJsonName)
+                .build();
+    }
+
+    @Bean
+    public NewTopic queueTopic(){
+        return TopicBuilder.name(queueTopicName)
                 .build();
     }
 }
