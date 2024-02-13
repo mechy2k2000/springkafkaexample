@@ -14,4 +14,12 @@ public class KafkaConsumer {
     public void consume(String message){
         LOGGER.info(String.format("Message received -> %s", message));
     }
+     @KafkaListener(topics = "${spring.kafka.queue-topic-name}", groupId = "${spring.kafka.consumer.group-id}")
+    public void consumeQueue(String message){
+        LOGGER.info(String.format("Emailing Message received -> %s", message));
+
+
+    }
+
+    
 }
